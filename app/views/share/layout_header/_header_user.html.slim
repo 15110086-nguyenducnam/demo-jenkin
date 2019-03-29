@@ -109,11 +109,11 @@ header#header
                     a[href="blog-single.html"]
                       | Blog Single
               li
-                a[href="404.html"]
+                a[href= new_errorpage_path]
                   | 404
-              li
-                a[href="contact-us.html"]
-                  | Contact
         .col-sm-3
           .search_box.pull-right
-            input[type="text" placeholder="Search"]
+            = form_for 'product',url: products_path, method: :get, id: "form-search" do |f|
+              = f.text_field :name, placeholder: "Search", class: "col-sm-9"
+              = f.button type: "submit", class: "col-sm-3"
+                .fa.fa-search

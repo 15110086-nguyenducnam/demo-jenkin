@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_31_035207) do
+ActiveRecord::Schema.define(version: 2018_08_06_041524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_035207) do
     t.bigint "order_status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 1
     t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
@@ -60,26 +61,6 @@ ActiveRecord::Schema.define(version: 2018_07_31_035207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
-  end
-
-  create_table "purchases", force: :cascade do |t|
-    t.bigint "orders_id"
-    t.string "user_name"
-    t.string "email"
-    t.string "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["orders_id"], name: "index_purchases_on_orders_id"
-  end
-
-  create_table "regestrations", force: :cascade do |t|
-    t.bigint "order_id"
-    t.string "user_name"
-    t.string "address"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_regestrations_on_order_id"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -117,6 +98,5 @@ ActiveRecord::Schema.define(version: 2018_07_31_035207) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "order_statuses"
-  add_foreign_key "regestrations", "orders"
   add_foreign_key "registrations", "orders"
 end

@@ -1,0 +1,17 @@
+.container.text-center
+  .logo-404
+    a[href="index.html"]
+      img[src="images/home/logo.png" alt=""]
+    = link_to (root_path) do
+      = image_tag ("home/logo.png")
+  .content-404
+    = image_tag("404/404.png", class: "img-responsive")
+    h1
+      b
+        | OPPS!
+      |  We Couldn’t Find this Page
+    p
+      | Uh... So it looks like you brock something. The page you are looking for has up and Vanished.
+    h2
+      a[href= root_path]
+        | Bring me back Home

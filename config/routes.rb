@@ -11,14 +11,15 @@ Rails.application.routes.draw do
     get "productdetail"
   end
   namespace :admin do
-  resources :categories, :products
+    resources :categories, :products
   end
   resources :cart, only: [:show, :index]
   resources :order_items, only: [:create, :update, :destroy]
   resources :home
   resources :categories
 
-  resources :registrations
-  post "/hook" => "registrations#hook"
-  post "/registrations/:id" => "registrations#show"
+  # resources :registrations
+  # post "/hook" => "registrations#hook"
+  # post "/registrations/:id" => "registrations#show"
+  resources :errorpages, only: [:new]
 end

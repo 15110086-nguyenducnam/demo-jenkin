@@ -7,7 +7,10 @@ class ProductsController < ApplicationController
     @product = Product.new
     if params[:product][:name]
         @order_item = current_order.order_items.new
-        @producs_user = Product.search_by_full_name(params[:product][:name])
+        # @producs_user = Product.search_by_full_name(params[:product][:name])
+        # @producs_user = Product.where(name: params[:product][:name]).or(Product.where(description: params[:product][:name]))
+        @producs_user = Product.where('name like ? or description like ?', "%#{params[:product][:name]}%","%#{params[:product][:name]}%")
+        # binding.pry
         if @producs_user.size <= 0
             @producs_user = Product.all
         end

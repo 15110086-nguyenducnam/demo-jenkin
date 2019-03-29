@@ -30,3 +30,7 @@
 
 # Ignore env
 .env
+# Ignore idea
+.idea
+# Ignore vscode
+.vscode

@@ -112,14 +112,11 @@ header#header
                     a[href="blog-single.html"]
                       | Blog Single
               li
-                a[href="404.html"]
+                a[href= new_errorpage_path]
                   | 404
-              li
-                a[href="contact-us.html"]
-                  | Contact
         .col-sm-3
           .search_box.pull-right
-            = form_for 'product',url: products_path, method: :get, id: "form-search" do |f|
-              = f.text_field :name, placeholder: "Search", class: "col-sm-9"
-              = f.button type: "submit", class: "col-sm-3"
+            = form_for 'product',url: products_path, method: :get, id: "form-search", remote: true do |f|
+              = f.text_field :name, placeholder: "Search", class: "col-sm-9 form-change"
+              = f.button type: "submit", class: "col-sm-3 btn-click"
                 .fa.fa-search

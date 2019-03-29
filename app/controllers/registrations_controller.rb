@@ -15,7 +15,7 @@ class RegistrationsController < ApplicationController
   def new
     @registration = Registration.new
     @order = Order.find_by id: params["order_id"]
-    redirect_to root_path  if @order.nil? || @order.order_items.count == 0
+    redirect_to new_errorpage_path  if @order.nil? || @order.order_items.count == 0
   end
 
   # POST /registrations
@@ -41,7 +41,7 @@ class RegistrationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_registration
       @registration = Registration.find(params[:id])
     end

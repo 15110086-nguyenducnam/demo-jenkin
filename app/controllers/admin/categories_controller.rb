@@ -1,8 +1,8 @@
 class Admin::CategoriesController < Admin::BaseController
 
   def index
-    @category=Category.new
-    @get_category=Category.all
+    @category = Category.new
+    @get_category = Category.all
   end
 
   def show
@@ -33,8 +33,9 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   private
-  def category_params
-    params.require(:category).permit(:name, :description)
-  end
+
+    def category_params
+      params.require(:category).permit(:name, :description)
+    end
 
 end

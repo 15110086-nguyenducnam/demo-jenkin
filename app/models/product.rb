@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
   # associations
   belongs_to :category
-  has_many :order_items
+  has_many :order_items, dependent: :nullify
 
   # validates
-  validates :name, presence: true
+  validates :name,  presence: true
   validates :price, presence: true
   validates :description, presence: true
 

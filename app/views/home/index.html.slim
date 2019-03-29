@@ -100,3 +100,9 @@ section.items
                         | Easy Polo Black Edition
                       button.add-to-cart.btn.btn-default.my-btn[type="button"]
                         | Add to cart
+javascript:
+  $(document).ready(function () {
+       $('.form-change').on('change, keyup',function () {
+         $( ".btn-click" ).click();
+        });
+   });
