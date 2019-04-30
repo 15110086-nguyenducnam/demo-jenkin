@@ -11,5 +11,6 @@ services:
       - .:/myapp
     ports:
       - "3000:3000"
+    # container_name: "ruby-2.4.1-test"
     depends_on:
       - db
