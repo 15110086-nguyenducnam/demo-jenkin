@@ -26,6 +26,7 @@ node('docker') {
   
     stage 'Integration Test'
         sh "docker-compose up -d"
+        sh "docker exec -it demo-jenkin_web_1_ec2b214425fc bundle exec rspec"
         // sh "rake exec rspec"
         sh "docker-compose down -v"
 }

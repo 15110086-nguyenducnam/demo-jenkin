@@ -34,3 +34,4 @@
 .idea
 # Ignore vscode
 .vscode
+public/uploads/product/image
