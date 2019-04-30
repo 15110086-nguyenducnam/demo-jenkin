@@ -25,7 +25,7 @@ node('docker') {
       //  sh "docker build -t accountownerapp:test-B${BUILD_NUMBER} -f Dockerfile.Integration ."
   
     stage 'Integration Test'
-        sh "docker-compose -f up --force-recreate --abort-on-container-exit"
+        sh "docker-compose -d up --force-recreate --abort-on-container-exit"
         sh "rake exec rspec"
         sh "docker-compose down -v"
 }
