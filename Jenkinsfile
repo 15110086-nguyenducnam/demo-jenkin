@@ -16,7 +16,7 @@ pipeline {
                 sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
           }
       }
-      stage('Integration Test') { 
+      stage('deploy') { 
           steps {
               sh "docker-compose down -v"
           }
