@@ -24,7 +24,6 @@
 //   }
 // }
 node('docker') {
-    agent any 
     stage 'Checkout'
         checkout scm
     stage 'Build & UnitTest'
