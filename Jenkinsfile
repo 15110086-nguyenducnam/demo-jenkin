@@ -1,44 +1,45 @@
-pipeline {
-  agent any 
-  stages {
-      stage('Checkout') { 
-          checkout scm
-      }
-      stage('Build & UnitTest') { 
-          steps {
-              // 
-              sh "docker-compose up -d"
-          }
-      }
-      stage('Integration Test') { 
-          steps {
-                sh "docker exec -t jenkin-shop_web_1 rake db:setup"
-                sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
-          }
-      }
-      stage('deploy') { 
-          steps {
-              sh "docker-compose down -v"
-          }
-      }
-  }
-}
-// node('docker') {
-//     stage 'Checkout'
-//         checkout scm
-//     stage 'Build & UnitTest'
-//       //   sh "docker build -t accountownerapp:B${BUILD_NUMBER} -f Dockerfile ."
-//       //  sh "docker build -t accountownerapp:test-B${BUILD_NUMBER} -f Dockerfile.Integration ."
-  
-//     stage 'Integration Test'
-//         sh "docker-compose up -d"
-//         sh "docker exec -t jenkin-shop_web_1 rake db:setup"
-//         sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
-//         // sh "rake exec rspec"
-
-
-//         sh "docker-compose down -v"
+// pipeline {
+//   agent any 
+//   stages {
+//       stage('Checkout') { 
+//           checkout scm
+//       }
+//       stage('Build & UnitTest') { 
+//           steps {
+//               // 
+//               sh "docker-compose up -d"
+//           }
+//       }
+//       stage('Integration Test') { 
+//           steps {
+//                 sh "docker exec -t jenkin-shop_web_1 rake db:setup"
+//                 sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
+//           }
+//       }
+//       stage('deploy') { 
+//           steps {
+//               sh "docker-compose down -v"
+//           }
+//       }
+//   }
 // }
+node('docker') {
+    agent any 
+    stage 'Checkout'
+        checkout scm
+    stage 'Build & UnitTest'
+      //   sh "docker build -t accountownerapp:B${BUILD_NUMBER} -f Dockerfile ."
+      //  sh "docker build -t accountownerapp:test-B${BUILD_NUMBER} -f Dockerfile.Integration ."
+  
+    stage 'Integration Test'
+        sh "docker-compose up -d"
+        sh "docker exec -t jenkin-shop_web_1 rake db:setup"
+        sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
+        // sh "rake exec rspec"
+
+
+        sh "docker-compose down -v"
+}
 // node('docker') {
 //     stage 'Prepare Container'
 //     stage 'Install Gems'
