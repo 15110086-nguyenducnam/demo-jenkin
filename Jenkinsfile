@@ -25,19 +25,27 @@
 // }
 node('docker') {
     stage 'Checkout'
-        checkout scm
+      checkout scm
     stage 'Build & UnitTest'    
       //   sh "docker build -t accountownerapp:B${BUILD_NUMBER} -f Dockerfile ."
       //  sh "docker build -t accountownerapp:test-B${BUILD_NUMBER} -f Dockerfile.Integration ."
   
     stage 'Integration Test'
-        sh "docker-compose up -d"
-        sh "docker exec -t jenkin-shop_web_1 rake db:setup"
-        sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
-        // sh "rake exec rspec"
-
-
-        sh "docker-compose down -v"
+      sh "docker-compose up -d"
+      sh "docker exec -t jenkin-shop_web_1 rake db:setup"
+      sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
+      // sh "rake exec rspec"
+      sh "docker-compose down -v"
+    stage "Deploy"
+      if (currentBuild.result == 'SUCCESS') { 
+          // sh './deploy.sh'
+          echo "pass"
+      }
+      else {
+          mail subject: "Something is wrong with ${env.JOB_NAME} ${env.BUILD_ID}",
+                    to: 'nobody@example.com',
+                  body: 'You should fix it'
+      }
 }
 // node('docker') {
 //     stage 'Prepare Container'
