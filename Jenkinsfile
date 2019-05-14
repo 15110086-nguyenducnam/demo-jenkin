@@ -42,9 +42,10 @@ node('docker') {
           echo "pass"
       }
       else {
-          mail subject: "Something is wrong with ${env.JOB_NAME} ${env.BUILD_ID}",
-                    to: 'nobody@example.com',
-                  body: 'You should fix it'
+          // mail subject: "Something is wrong with ${env.JOB_NAME} ${env.BUILD_ID}",
+          //           to: 'nobody@example.com',
+          //         body: 'You should fix it'
+          echo "fail"
       }
 }
 // node('docker') {
