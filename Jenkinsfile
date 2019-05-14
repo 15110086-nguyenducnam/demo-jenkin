@@ -27,7 +27,7 @@ node('docker') {
     stage 'Checkout'
       checkout scm
     stage 'Build & UnitTest'    
-      //   sh "docker build -t accountownerapp:B${BUILD_NUMBER} -f Dockerfile ."
+      //  sh "docker build -t accountownerapp:B${BUILD_NUMBER} -f Dockerfile ."
       //  sh "docker build -t accountownerapp:test-B${BUILD_NUMBER} -f Dockerfile.Integration ."
   
     stage 'Integration Test'
@@ -46,6 +46,19 @@ node('docker') {
           //           to: 'nobody@example.com',
           //         body: 'You should fix it'
           echo "fail"
+      }
+}
+node('deploy2') {
+  stage "deploy2"
+    if (currentBuild.result == 'SUCCESS') { 
+          // sh './deploy.sh'
+          echo "pass22"
+      }
+      else {
+          // mail subject: "Something is wrong with ${env.JOB_NAME} ${env.BUILD_ID}",
+          //           to: 'nobody@example.com',
+          //         body: 'You should fix it'
+          echo "fail22"
       }
 }
 // node('docker') {
