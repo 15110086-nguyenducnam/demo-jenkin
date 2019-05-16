@@ -48,19 +48,19 @@ node('docker') {
           echo "fail"
       }
 }
-node('deploy2') {
-  stage "deploy2"
-    if (currentBuild.result == 'SUCCESS') { 
-          // sh './deploy.sh'
-          echo "pass22"
-      }
-      else {
-          // mail subject: "Something is wrong with ${env.JOB_NAME} ${env.BUILD_ID}",
-          //           to: 'nobody@example.com',
-          //         body: 'You should fix it'
-          echo "fail22"
-      }
-}
+// node('deploy2') {
+//   stage "deploy2"
+//     if (currentBuild.result == 'SUCCESS') { 
+//           // sh './deploy.sh'
+//           echo "pass22"
+//       }
+//       else {
+//           // mail subject: "Something is wrong with ${env.JOB_NAME} ${env.BUILD_ID}",
+//           //           to: 'nobody@example.com',
+//           //         body: 'You should fix it'
+//           echo "fail22"
+//       }
+// }
 // node('docker') {
 //     stage 'Prepare Container'
 //     stage 'Install Gems'
