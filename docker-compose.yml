@@ -11,6 +11,6 @@ services:
       - .:/myapp
     ports:
       - "3000:3000"
-    container_name: jenkin-shop_web_1
+    container_name: shop_web_1
     depends_on:
       - db

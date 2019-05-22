@@ -33,8 +33,8 @@ node('docker') {
     stage 'Integration Test'
       sh "docker ps"
       sh "docker-compose up -d"
-      // sh "docker exec -t jenkin-shop_web_1 rake db:setup"
-      // sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
+      // sh "docker exec -t shop_web_1 rake db:setup"
+      // sh "docker exec -t shop_web_1 bundle exec rspec"
       // sh "rake exec rspec"
       sh "docker-compose down -v"
     stage "Deploy"
