@@ -37,16 +37,16 @@ node('docker') {
       // sh "rake exec rspec"
       sh "docker-compose down -v"
     stage "Deploy"
-      if (currentBuild.result == 'SUCCESS') { 
-          // sh './deploy.sh'
-          echo "pass"
-      }
-      else {
-          // mail subject: "Something is wrong with ${env.JOB_NAME} ${env.BUILD_ID}",
-          //           to: 'nobody@example.com',
-          //         body: 'You should fix it'
-          echo "fail"
-      }
+      // if (currentBuild.result == 'SUCCESS') { 
+      //     // sh './deploy.sh'
+      //     echo "pass"
+      // }
+      // else {
+      //     // mail subject: "Something is wrong with ${env.JOB_NAME} ${env.BUILD_ID}",
+      //     //           to: 'nobody@example.com',
+      //     //         body: 'You should fix it'
+      //     echo "fail"
+      // }
 }
 // node('deploy2') {
 //   stage "deploy2"
