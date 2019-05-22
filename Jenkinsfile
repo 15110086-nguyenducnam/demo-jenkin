@@ -14,7 +14,7 @@
 //           steps {
 //                 sh "docker exec -t jenkin-shop_web_1 rake db:setup"
 //                 sh "docker exec -t jenkin-shop_web_1 bundle exec rspec"
-//           }
+//           }agent any
 //       }
 //       stage('deploy') { 
 //           steps {
